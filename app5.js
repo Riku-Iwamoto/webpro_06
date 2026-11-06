@@ -4,6 +4,37 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 
+let station = [
+  { id:1, code:"JE01", name:"東京駅"},
+  { id:2, code:"JE02", name:"八丁堀駅"},
+  { id:3, code:"JE03", name:"越中島駅"},
+  { id:4, code:"JE04", name:"潮見駅"},
+  { id:5, code:"JE05", name:"新木場駅"},
+  { id:6, code:"JE06", name:"葛西臨海公園駅"},
+  { id:7, code:"JE07", name:"舞浜駅"},
+  { id:8, code:"JE08", name:"新浦安駅"},
+  { id:9, code:"JE09", name:"市川塩浜駅"},
+  { id:10, code:"JE10", name:"二俣新町駅"},
+  { id:11, code:"JE11", name:"南船橋駅"},
+  { id:12, code:"JE12", name:"新習志野駅"},
+  { id:13, code:"JE13", name:"幕張豊砂駅"},
+  { id:14, code:"JE14", name:"海浜幕張駅"},
+];
+
+app.get("/keiyo", (req, res) => {
+  // 本来ならここにDBとのやり取りが入る
+  res.render('db2', { data: station });
+});
+
+app.get("/keiyo_add", (req, res) => {
+  const id = Number(req.query.id);
+  const code = req.query.code;
+  const name = req.query.name;
+
+  station.push({ id, code, name });
+  res.redirect("/public/keiyo_add.html");
+});
+
 app.get("/hello1", (req, res) => {
   const message1 = "Hello world";
   const message2 = "Bon jour";

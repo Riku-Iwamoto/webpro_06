@@ -35,6 +35,16 @@ app.get("/keiyo_add", (req, res) => {
   res.redirect("/public/keiyo_add.html");
 });
 
+const songs = [
+  { id: 1, title: "共犯", scene: "盛り上がりたい時" },
+  { id: 2, title: "ア・ポステリオリ", scene: "ムカついた時" },
+  { id: 3, title: "うブ", scene: "ぶち上がりたい時" }
+];
+
+app.get("/songs", (req, res) => {
+  res.render("songs", { data: songs });
+});
+
 app.get("/hello1", (req, res) => {
   const message1 = "Hello world";
   const message2 = "Bon jour";

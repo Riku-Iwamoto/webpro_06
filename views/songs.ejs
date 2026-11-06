@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Mrs. GREEN APPLEの曲リスト</title>
+</head>
+<body>
+  <h1>Mrs. GREEN APPLEの曲リスト</h1>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>曲名</th><th>聴きたい場面</th></tr>
+    </thead>
+    <tbody>
+      <% for (const row of data) { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><%= row.title %></td>
+          <td><%= row.scene %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

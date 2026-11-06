@@ -41,6 +41,20 @@ const songs = [
   { id: 3, title: "うブ", scene: "ぶち上がりたい時" }
 ];
 
+app.get("/song_add", (req, res) => {
+  const title = req.query.title;
+  const scene = req.query.scene;
+
+  if (typeof title !== "string" || !title.trim() ||
+      typeof scene !== "string" || !scene.trim()) {
+    return res.status(400).send("曲名と聴きたい場面を入力してください．");
+  }
+
+  const id = songs.length + 1;
+  songs.push({ id, title: title.trim(), scene: scene.trim() });
+  res.redirect("/songs");
+});
+
 app.get("/songs", (req, res) => {
   res.render("songs", { data: songs });
 });
